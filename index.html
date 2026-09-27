@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PlaceCell – Student Placement System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- AUTH -->
+<section id="auth" class="auth">
+  <div class="auth-side">
+    <div class="brand"><span class="brand-mark">P</span>PlaceCell</div>
+    <div>
+      <h1>Your campus placement season, in one place.</h1>
+      <p>Browse drives you're eligible for, apply in one click and track every round until the offer letter.</p>
+    </div>
+    <div class="ticker">
+      <div>Infosys drive open for CSE, IT, ECE</div>
+      <div>TCS NQT test scheduled next week</div>
+      <div>Wipro shortlist published</div>
+    </div>
+  </div>
+  <div class="auth-main">
+    <div class="auth-box">
+      <div class="tabs" role="tablist">
+        <button id="tabLogin" class="on" onclick="showAuth('login')">Log in</button>
+        <button id="tabReg" onclick="showAuth('register')">Register</button>
+      </div>
+
+      <form id="loginForm" onsubmit="event.preventDefault();login()">
+        <h2>Welcome back</h2>
+        <label for="lEmail">Email</label>
+        <input id="lEmail" type="email" required>
+        <label for="lPass">Password</label>
+        <input id="lPass" type="password" required>
+        <button class="btn full" type="submit">Log in</button>
+        <div class="err" id="lErr"></div>
+        <div class="demo">Try a demo account:<br>
+          <button type="button" onclick="demo('student')">Student (Rahul)</button> ·
+          <button type="button" onclick="demo('admin')">Placement officer</button>
+        </div>
+      </form>
+
+      <form id="regForm" class="hidden" onsubmit="event.preventDefault();register()">
+        <h2>Create student account</h2>
+        <label for="rName">Full name</label>
+        <input id="rName" required>
+        <label for="rEmail">Email</label>
+        <input id="rEmail" type="email" required>
+        <div class="row2">
+          <div><label for="rBranch">Branch</label>
+            <select id="rBranch"><option>CSE</option><option>IT</option><option>ECE</option><option>EEE</option><option>ME</option><option>CE</option></select></div>
+          <div><label for="rCgpa">CGPA</label>
+            <input id="rCgpa" type="number" step="0.01" min="0" max="10" required></div>
+        </div>
+        <label for="rPass">Password</label>
+        <input id="rPass" type="password" minlength="4" required>
+        <button class="btn full gold" type="submit">Create account</button>
+        <div class="err" id="rErr"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- APP -->
+<section id="app" class="hidden">
+  <header class="top"><div class="top-in">
+    <div class="brand"><span class="brand-mark">P</span>PlaceCell</div>
+    <nav class="nav" id="nav"></nav>
+    <div class="who"><b id="whoName"></b><span id="whoMeta"></span></div>
+    <button class="btn ghost small" onclick="logout()">Log out</button>
+  </div></header>
+  <main id="view"></main>
+</section>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
